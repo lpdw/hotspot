@@ -151,7 +151,7 @@ extension AppDelegate {
     
     func fetchHotSpots(around location: CLLocation) {
         
-        let urlString = "https://opendata.paris.fr/api/records/1.0/search/?ß"
+        let urlString = "https://opendata.paris.fr/api/records/1.0/search/?"
         
         let parameters: [String: Any] = [
             "dataset": "liste_des_sites_des_hotspots_paris_wifi",
@@ -166,6 +166,10 @@ extension AppDelegate {
                 switch response.result {
                     
                 case .success(let json):
+                    guard   let content = json as? [String:Any],
+                        let records = content["records"] as? [[String:Any]] else {return}
+                
+                    self.hotSpots = records
                     print(json)
                 case .failure(let error):
                     print(error)
