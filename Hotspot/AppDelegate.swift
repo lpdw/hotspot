@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    let geoCoder = CLGeocoder()
+    var userCodePostal: String! = ""
     let locationManager = CLLocationManager()
     let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLon)
     
@@ -33,6 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NotificationCenter.default.post(notification)
         }
     }
+    
+    var postalCode:String! = "" {
+        didSet {
+            self.userCodePostal = self.postalCode
+        }
+    };
     
     var userLocation: CLLocation? {
         didSet {
@@ -152,12 +160,13 @@ extension AppDelegate {
     func fetchHotSpots(around location: CLLocation) {
         
         let urlString = "https://opendata.paris.fr/api/records/1.0/search/?"
-        
         let parameters: [String: Any] = [
+            "accept": "application/json",
             "dataset": "liste_des_sites_des_hotspots_paris_wifi",
-            "rows" : 500
-        ]
-        
+            "rows": 500,
+            "arrondissement" : self.userCodePostal,
+            ]
+
         Alamofire
             .request(urlString, parameters: parameters)
             .validate()
@@ -167,6 +176,7 @@ extension AppDelegate {
                     
                 case .success(let json):
                     guard   let content = json as? [String:Any],
+                        
                         let records = content["records"] as? [[String:Any]] else {return}
                 
                     self.hotSpots = records
@@ -194,6 +204,21 @@ extension AppDelegate: CLLocationManagerDelegate {
         print("locations: \(locations)")
         
         self.userLocation = locations.last
-    }
+        
+        self.geoCoder.reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error )->
+            Void in
+            if error != nil {
+                print("Error lors du reverse geoLocation : \(error.debugDescription)")
+                return
+            }
+            if placemarks!.count > 0 {
+                
+                let placemark = placemarks![0] as CLPlacemark
+                
+                self.postalCode = (placemark.postalCode  != nil) ? placemark.postalCode : ""; print("placemark update à : \(self.postalCode)")
+                
+            }else{print("Aucun placemark !")}
+        }
+    )}
     
 }
