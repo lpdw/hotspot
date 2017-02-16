@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94B2D380ABB842DDD36F6E86 /* Pods_Hotspot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDD7FFADE9CBF229CD0803A /* Pods_Hotspot.framework */; };
 		9D8183E11E55ADFA00F71BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8183E01E55ADFA00F71BD2 /* AppDelegate.swift */; };
 		9D8183E31E55ADFA00F71BD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8183E21E55ADFA00F71BD2 /* ViewController.swift */; };
 		9D8183E61E55ADFA00F71BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8183E41E55ADFA00F71BD2 /* Main.storyboard */; };
 		9D8183E91E55ADFA00F71BD2 /* Hotspot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D8183E71E55ADFA00F71BD2 /* Hotspot.xcdatamodeld */; };
 		9D8183EB1E55ADFA00F71BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8183EA1E55ADFA00F71BD2 /* Assets.xcassets */; };
 		9D8183EE1E55ADFA00F71BD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8183EC1E55ADFA00F71BD2 /* LaunchScreen.storyboard */; };
+		9D8183F61E55C46900F71BD2 /* HotSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8183F51E55C46900F71BD2 /* HotSpot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C47DFACBDED85BF7DCE62AA /* Pods-Hotspot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotspot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hotspot/Pods-Hotspot.release.xcconfig"; sourceTree = "<group>"; };
+		69EE2DB336501FBB84DB4BDB /* Pods-Hotspot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hotspot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hotspot/Pods-Hotspot.debug.xcconfig"; sourceTree = "<group>"; };
+		7BDD7FFADE9CBF229CD0803A /* Pods_Hotspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hotspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8183DD1E55ADFA00F71BD2 /* Hotspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8183E01E55ADFA00F71BD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8183E21E55ADFA00F71BD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		9D8183EA1E55ADFA00F71BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D8183ED1E55ADFA00F71BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D8183EF1E55ADFA00F71BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D8183F51E55C46900F71BD2 /* HotSpot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotSpot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B2D380ABB842DDD36F6E86 /* Pods_Hotspot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		297D7FE6FAFB2DCB2B2F66A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BDD7FFADE9CBF229CD0803A /* Pods_Hotspot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9D8183D41E55ADFA00F71BD2 = {
 			isa = PBXGroup;
 			children = (
 				9D8183DF1E55ADFA00F71BD2 /* Hotspot */,
 				9D8183DE1E55ADFA00F71BD2 /* Products */,
+				EC34AA1E331503B718089ADE /* Pods */,
+				297D7FE6FAFB2DCB2B2F66A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8183E01E55ADFA00F71BD2 /* AppDelegate.swift */,
+				9D8183F51E55C46900F71BD2 /* HotSpot.swift */,
 				9D8183E21E55ADFA00F71BD2 /* ViewController.swift */,
 				9D8183E41E55ADFA00F71BD2 /* Main.storyboard */,
 				9D8183EA1E55ADFA00F71BD2 /* Assets.xcassets */,
@@ -67,6 +85,15 @@
 			path = Hotspot;
 			sourceTree = "<group>";
 		};
+		EC34AA1E331503B718089ADE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69EE2DB336501FBB84DB4BDB /* Pods-Hotspot.debug.xcconfig */,
+				4C47DFACBDED85BF7DCE62AA /* Pods-Hotspot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D8183F21E55ADFA00F71BD2 /* Build configuration list for PBXNativeTarget "Hotspot" */;
 			buildPhases = (
+				D78C7D848FA9C2A7D31FCF74 /* [CP] Check Pods Manifest.lock */,
 				9D8183D91E55ADFA00F71BD2 /* Sources */,
 				9D8183DA1E55ADFA00F71BD2 /* Frameworks */,
 				9D8183DB1E55ADFA00F71BD2 /* Resources */,
+				C9993C63359EA3B999ADEF4B /* [CP] Embed Pods Frameworks */,
+				787F4EF4437D24B7497159A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +164,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		787F4EF4437D24B7497159A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotspot/Pods-Hotspot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9993C63359EA3B999ADEF4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hotspot/Pods-Hotspot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D78C7D848FA9C2A7D31FCF74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9D8183D91E55ADFA00F71BD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9D8183E31E55ADFA00F71BD2 /* ViewController.swift in Sources */,
+				9D8183F61E55C46900F71BD2 /* HotSpot.swift in Sources */,
 				9D8183E11E55ADFA00F71BD2 /* AppDelegate.swift in Sources */,
 				9D8183E91E55ADFA00F71BD2 /* Hotspot.xcdatamodeld in Sources */,
 			);
@@ -260,6 +339,7 @@
 		};
 		9D8183F31E55ADFA00F71BD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69EE2DB336501FBB84DB4BDB /* Pods-Hotspot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hotspot/Info.plist;
@@ -272,6 +352,7 @@
 		};
 		9D8183F41E55ADFA00F71BD2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C47DFACBDED85BF7DCE62AA /* Pods-Hotspot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Hotspot/Info.plist;
@@ -301,6 +382,7 @@
 				9D8183F41E55ADFA00F71BD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

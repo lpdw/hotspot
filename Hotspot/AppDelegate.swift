@@ -8,15 +8,63 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import Alamofire
+
+let centerLat = 48.831034
+let centerLon = 2.355265
+
+extension Notification.Name {
+    static let locationDidChange = Notification.Name("locationDidChange")
+    static let hotSpotsDidChange = Notification.Name("hotSpotsDidChange")
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let locationManager = CLLocationManager()
+    let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLon)
+    
+    var hotSpots: [[String: Any]]? {
+        didSet {
+            let notification = Notification(name: Notification.Name.hotSpotsDidChange)
+            NotificationCenter.default.post(notification)
+        }
+    }
+    
+    var userLocation: CLLocation? {
+        didSet {
+            let notification = Notification(name: Notification.Name.locationDidChange, object: userLocation, userInfo: nil)
+            NotificationCenter.default.post(notification)
+        }
+    }
+    
+    class func instance() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // UserDefaults sample code
+        let defaults = UserDefaults.standard
+        
+        defaults.set([1, 2], forKey: "a")
+        defaults.synchronize()
+        
+        let _ = defaults.array(forKey: "a")
+        
+        
+        // Notification sample code
+        NotificationCenter.default.addObserver(self, selector: #selector(locationDidChange), name: NSNotification.Name.locationDidChange, object: nil)
+        
+        
+        // !!! Don't do that this way !!!
+        self.startLocate()
         return true
     }
 
@@ -74,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -88,6 +136,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
 }
 
+
+// MARK: - hotSpots methods
+extension AppDelegate {
+    
+    func locationDidChange(notification: Notification) {
+        guard let userLocation = notification.object as? CLLocation else { return }
+        
+        fetchHotSpots(around: userLocation)
+    }
+    
+    func fetchHotSpots(around location: CLLocation) {
+        
+        let urlString = "https://opendata.paris.fr/api/records/1.0/search/?ß"
+        
+        let parameters: [String: Any] = [
+            "dataset": "liste_des_sites_des_hotspots_paris_wifi",
+            "rows" : 500
+        ]
+        
+        Alamofire
+            .request(urlString, parameters: parameters)
+            .validate()
+            .responseJSON { (response: DataResponse<Any>) in
+                
+                switch response.result {
+                    
+                case .success(let json):
+                    print(json)
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+}
+
+
+// MARK: - CLLocationManagerDelegate
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func startLocate() {
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 100.0
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("locations: \(locations)")
+        
+        self.userLocation = locations.last
+    }
+    
+}
