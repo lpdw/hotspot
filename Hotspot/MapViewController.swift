@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 import Alamofire
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -92,6 +92,12 @@ class MapViewController: UIViewController {
         }
         
         self.mapView.addAnnotations(annotations)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        view.image = #imageLiteral(resourceName: "Pointer")
+        return view
     }
     
 }
